@@ -9,6 +9,7 @@ import '../../panels/network/network-meta.js';
 import '../../panels/security/security-meta.js';
 import '../../panels/emulation/emulation-meta.js';
 import '../../panels/sensors/sensors-meta.js';
+import '../../panels/pressure/pressure-meta.js';
 import '../../panels/accessibility/accessibility-meta.js';
 import '../../panels/animation/animation-meta.js';
 import '../../panels/developer_resources/developer_resources-meta.js';

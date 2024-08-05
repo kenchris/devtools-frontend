@@ -26,6 +26,7 @@ devtools_entrypoint("entrypoint") {
     "../../panels/mobile_throttling:meta",
     "../../panels/network:meta",
     "../../panels/performance_monitor:meta",
+    "../../panels/pressure:meta",
     "../../panels/recorder:meta",
     "../../panels/security:meta",
     "../../panels/sensors:meta",

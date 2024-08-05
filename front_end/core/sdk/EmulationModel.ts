@@ -213,6 +213,18 @@ export class EmulationModel extends SDKModel<void> {
     return this.#overlayModelInternal;
   }
 
+  async setPressureSourceOverrideEnabled(enabled: boolean): Promise<void> {
+    await this.#emulationAgent.invoke_setPressureSourceOverrideEnabled(
+        {source: Protocol.Emulation.PressureSource.Cpu, enabled});
+  }
+
+  async setPressureStateOverride(pressureState: string): Promise<void> {
+    await this.#emulationAgent.invoke_setPressureStateOverride({
+      source: Protocol.Emulation.PressureSource.Cpu,
+      state: pressureState as Protocol.Emulation.PressureState,
+    });
+  }
+
   async emulateLocation(location: Location|null): Promise<void> {
     if (!location) {
       await Promise.all([

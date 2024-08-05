@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2015 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+.pressure-view {
+  padding: 12px;
+  display: block;
+}
+
+.pressure-view input {
+  width: 100%;
+  max-width: 120px;
+  margin: -5px 10px 0 0;
+  text-align: end;
+}
+
+.pressure-view input[readonly] {
+  background-color: var(--sys-color-neutral-container);
+}
+
+.pressure-view fieldset {
+  border: none;
+  padding: 10px 0;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.pressure-view fieldset[disabled] {
+  opacity: 50%;
+}
+
+.pressure-view input:focus::-webkit-input-placeholder {
+  color: transparent !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.pressure-view .chrome-select {
+  width: 200px;
+}
+
+.pressure-group-title {
+  width: 140px;
+  line-height: 24px;
+}
+
+.pressure-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.geo-fields {
+  flex: 2 0 200px;
+}
