@@ -52,6 +52,8 @@ export class PressureView extends UI.Widget.VBox {
 
     this.#pressureSetting = Common.Settings.Settings.instance().createSetting('emulation.cpu-pressure-override', '');
     this.#pressureState = this.#pressureSetting.get();
+
+
     this.#pressureOverrideEnabled = !!this.#pressureState;
 
     // debug
@@ -59,6 +61,7 @@ export class PressureView extends UI.Widget.VBox {
     this.contentElement.appendChild(groupTitle);
 
     this.createCPUSection();
+    this.setPreviousState();
   }
 
   override wasShown(): void {
@@ -108,6 +111,20 @@ export class PressureView extends UI.Widget.VBox {
     const optionValues = Array.prototype.map.call(this.pressureSelectElement.options, x => x.value);
     this.pressureSelectElement.selectedIndex = optionValues.indexOf(this.#pressureState);
     this.pressureSelectChanged();
+
+  }
+
+  private async setPreviousState(): Promise<void> {
+    console.log("PRESSURE OVERRIDE ENABLED = " + this.#pressureOverrideEnabled);
+    console.log("State is = " + this.#pressureState);
+    if (this.#pressureState != 'no-override') {
+      console.log("Lets go");
+      for (const emulationModel of SDK.TargetManager.TargetManager.instance().models(SDK.EmulationModel.EmulationModel)) {
+        console.log("Lets go2");
+        await emulationModel.setPressureSourceOverrideEnabled(this.#pressureOverrideEnabled);
+        await emulationModel.setPressureStateOverride(this.#pressureState);
+      }
+    }
   }
 
   private async pressureSelectChanged(): Promise<void> {
